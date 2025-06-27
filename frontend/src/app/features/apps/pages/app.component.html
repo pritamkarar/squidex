@@ -16,8 +16,15 @@
                     </span>
                 </div>
 
-                @if (app.description) {
-                    <div class="card-text">{{ app.description }}</div>
+                @if (app.description?.startsWith('http')) {
+                    <div class="card-text">
+                        <a href="{{ app.description }}" sqxExternalLink sqxStopClick>Go to website</a>
+                    </div>
+                }
+                @else {
+                    <div class="card-text">
+                        {{ app.description }}
+                    </div>
                 }
             </div>
         </div>

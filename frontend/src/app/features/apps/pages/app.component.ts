@@ -8,7 +8,7 @@
 
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AppDto, AvatarComponent, ConfirmClickDirective, DropdownMenuComponent, ModalDirective, ModalModel, ModalPlacementDirective, StopClickDirective, TourStepDirective, TranslatePipe } from '@app/shared';
+import { AppDto, AvatarComponent, ConfirmClickDirective, DropdownMenuComponent, ExternalLinkDirective, ModalDirective, ModalModel, ModalPlacementDirective, StopClickDirective, TourStepDirective, TranslatePipe } from '@app/shared';
 
 @Component({
     selector: 'sqx-app',
@@ -24,6 +24,7 @@ import { AppDto, AvatarComponent, ConfirmClickDirective, DropdownMenuComponent, 
         RouterLink,
         StopClickDirective,
         TourStepDirective,
+        ExternalLinkDirective,
         TranslatePipe,
     ],
 })
