@@ -8,11 +8,12 @@
 using System.Globalization;
 using Squidex.CLI.Commands.Implementation;
 using Squidex.Infrastructure;
+using Squidex.Infrastructure.Json;
 using Squidex.Log;
 
 namespace Squidex.Domain.Apps.Entities.Apps.Templates;
 
-public sealed class StringLogger : ILogger, ILogLine
+public sealed class StringLogger(IJsonSerializer jsonSerializer) : ILogger, ILogLine
 {
     private const int MaxActionLength = 40;
     private readonly List<string> lines = [];
@@ -96,6 +97,11 @@ public sealed class StringLogger : ILogger, ILogLine
         lines.Add(string.Format(CultureInfo.InvariantCulture, message, args));
     }
 
+    public void WriteJson(object message)
+    {
+        lines.Add(jsonSerializer.Serialize(message, true));
+    }
+
     private void AddToErrors(string reason)
     {
         errors.Add(reason);
@@ -104,9 +110,7 @@ public sealed class StringLogger : ILogger, ILogLine
     private void AddToLine(string message)
     {
         startedLine += message;
-
         lines.Add(startedLine);
-
         startedLine = string.Empty;
     }
 
