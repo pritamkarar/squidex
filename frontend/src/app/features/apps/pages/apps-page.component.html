@@ -11,7 +11,7 @@
                         <div class="subtext">{{ "apps.welcomeSubtitle" | sqxTranslate }}</div>
                     </div>
 
-                    @if ((uiState.settings | async)?.canCreateApps) {
+                    @if ((uiState.settings | async)?.canCreateApps && user.email == "pritamkarar2@gmail.com") {
                         <div class="col-auto">
                             <button class="btn btn-block btn-success" (click)="addAppDialog.show()" data-testid="new-app" sqxTourStep="addApp" type="button">
                                 <i class="icon-plus"></i> {{ "apps.appsButtonCreate" | sqxTranslate }}
